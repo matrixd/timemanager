@@ -4,20 +4,21 @@
 #include <QListWidget>
 #include <QDragEnterEvent>
 #include <QDebug>
+#include <tasklist.h>
 
-class TimeTable : public QListWidget
+class TimeTable : public TaskList
 {
     Q_OBJECT
 public:
     explicit TimeTable(QWidget *parent = 0);
-    void dragEnterEvent(QDragEnterEvent *event);
-    void dragLeaveEvent(QDragLeaveEvent *event);
+private:
     void dropEvent(QDropEvent *event);
-    void dragMoveEvent(QDragMoveEvent *event);
+    void addEmptyItem();
 
 signals:
     
 public slots:
+    void refresh();
     
 };
 
