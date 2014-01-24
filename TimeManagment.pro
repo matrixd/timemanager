@@ -13,10 +13,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     tasklist.cpp \
-    timetable.cpp
+    timetable.cpp \
+    propertiesdialog.cpp
 
 HEADERS  += mainwindow.h \
     tasklist.h \
-    timetable.h
+    timetable.h \
+    propertiesdialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    propertiesdialog.ui

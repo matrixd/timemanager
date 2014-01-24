@@ -7,6 +7,8 @@ TaskList::TaskList(QWidget *parent) :
     setDragEnabled(true);
     setAcceptDrops(true);
     setDropIndicatorShown(true);
+    QObject::connect(this, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
+                     this, SLOT(editDialog(QListWidgetItem*)));
 }
 
 void TaskList::dragEnterEvent(QDragEnterEvent *event)
@@ -77,4 +79,13 @@ void TaskList::dropEvent(QDropEvent *event)
         event->accept();
         emit listChanged();
     }
+}
+
+void TaskList::editDialog(QListWidgetItem *item){
+    PropertiesDialog* dialog;
+    QTime duration = item->data(1).toTime();
+    QString descr = item->text();
+
+    dialog = new PropertiesDialog(duration,descr,this);
+    dialog->show();
 }

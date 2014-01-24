@@ -4,6 +4,7 @@
 #include <QListWidget>
 #include <QDragEnterEvent>
 #include <QTime>
+#include <propertiesdialog.h>
 
 class TaskList : public QListWidget
 {
@@ -19,9 +20,8 @@ private:
 signals:
     void listChanged();
     
-signals:
-    
-public slots:
+private slots:
+    void editDialog(QListWidgetItem*);
     
 };
 
