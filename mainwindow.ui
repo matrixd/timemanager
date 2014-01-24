@@ -67,13 +67,13 @@
          <bool>false</bool>
         </property>
         <property name="verticalScrollBarPolicy">
-         <enum>Qt::ScrollBarAlwaysOn</enum>
+         <enum>Qt::ScrollBarAlwaysOff</enum>
         </property>
         <property name="horizontalScrollBarPolicy">
-         <enum>Qt::ScrollBarAlwaysOn</enum>
+         <enum>Qt::ScrollBarAlwaysOff</enum>
         </property>
         <property name="dragDropMode">
-         <enum>QAbstractItemView::DragDrop</enum>
+         <enum>QAbstractItemView::DropOnly</enum>
         </property>
         <property name="flow">
          <enum>QListView::LeftToRight</enum>

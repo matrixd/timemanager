@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
+    //Adding items to tasklist. For debug only.
     QListWidgetItem* item;
      item = new QListWidgetItem();
      ui->taskList->addItem(item);
@@ -20,7 +20,6 @@ MainWindow::MainWindow(QWidget *parent) :
      item->setBackgroundColor(QColor(0,255,0));
      item->setSizeHint(QSize(100,100));
      item->setData(1, QTime(4,0));
-     qDebug() << "start";
 }
 
 MainWindow::~MainWindow()

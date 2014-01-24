@@ -21,12 +21,13 @@ void TimeTable::addEmptyItem(){
 
 void TimeTable::dropEvent(QDropEvent *event)
 {
+    qDebug()<<dragEnabled();
     if (event->mimeData()->hasFormat("timetable/item")) {
         if(!dragEnabled()){
             clear();
             setDragEnabled(true);
         }
-
+         //Reading tasklist item properties
         QByteArray tmpd = event->mimeData()->data("timetable/item");
         QDataStream ds(&tmpd, QIODevice::ReadOnly);
         QColor color;
@@ -48,6 +49,9 @@ void TimeTable::dropEvent(QDropEvent *event)
 }
 
 void TimeTable::refresh(){
+    qDebug() << count();
+    //This piece of code counts dimensions for each object of timetable list.
+    //Width of object depends on it duration according to summary duration of all items
     if(count()>1){
         QList<QTime> durs;
         for(int k = 0; k<count();k++){
@@ -60,18 +64,16 @@ void TimeTable::refresh(){
         unsigned int sumDuration;
         sumDuration=sumDur.hour()*60+sumDur.minute();
         unsigned int width = size().width();
-        qDebug() << width;
         for(int k = 0; k<count();k++){
             QSize newSize;
             newSize.setHeight(size().height());
             newSize.setWidth(width*(durs[k].hour()*60+durs[k].minute())/sumDuration-2);
-            //newSize.setWidth(40);
-            qDebug() << k <<newSize;
             item(k)->setSizeHint(newSize);
         }
     } else {
-        if(count()==1)
+        if(count()==1){
             item(0)->setSizeHint(QSize(size().width(),size().height()));
+        }
         else
             addEmptyItem();
     }

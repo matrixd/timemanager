@@ -41,6 +41,9 @@ void TaskList::startDrag(Qt::DropActions /*supportedActions*/)
 {
     QListWidgetItem *item = currentItem();
 
+    //creating QMimeData object which will contain all necessary properties of tasklist item.
+    //All properties will be stored in QByteArray object.
+    //Preparing item for drag action.
     QMimeData *mimeData = new QMimeData;
     QByteArray ar;
     QDataStream ds(&ar, QIODevice::WriteOnly);
@@ -62,6 +65,7 @@ void TaskList::dropEvent(QDropEvent *event)
 {
     if (event->mimeData()->hasFormat("timetable/item")) {
 
+         //Reading tasklist item properties
         QByteArray tmpd = event->mimeData()->data("timetable/item");
         QDataStream ds(&tmpd, QIODevice::ReadOnly);
         QColor color;
@@ -84,6 +88,7 @@ void TaskList::dropEvent(QDropEvent *event)
 }
 
 void TaskList::editDialog(QListWidgetItem *item){
+    //slot that launches PropertiesDialog
     PropertiesDialog* dialog;
     QTime duration = item->data(1).toTime();
     QString descr = item->text();
