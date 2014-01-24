@@ -1,4 +1,7 @@
 #include "timetable.h"
+#include <QMimeData>
+#include <QDrag>
+#include <QDropEvent>
 
 TimeTable::TimeTable(QWidget *parent) :
     TaskList(parent)
@@ -47,7 +50,7 @@ void TimeTable::dropEvent(QDropEvent *event)
 void TimeTable::refresh(){
     if(count()>1){
         QList<QTime> durs;
-        for(unsigned int k = 0; k<count();k++){
+        for(int k = 0; k<count();k++){
             durs.append(item(k)->data(1).toTime());
         }
         QTime sumDur;
@@ -58,7 +61,7 @@ void TimeTable::refresh(){
         sumDuration=sumDur.hour()*60+sumDur.minute();
         unsigned int width = size().width();
         qDebug() << width;
-        for(unsigned int k = 0; k<count();k++){
+        for(int k = 0; k<count();k++){
             QSize newSize;
             newSize.setHeight(size().height());
             newSize.setWidth(width*(durs[k].hour()*60+durs[k].minute())/sumDuration-2);

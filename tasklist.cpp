@@ -1,5 +1,7 @@
 #include "tasklist.h"
 #include "QDebug"
+#include <QMimeData>
+#include <QDrag>
 
 TaskList::TaskList(QWidget *parent) :
     QListWidget(parent)

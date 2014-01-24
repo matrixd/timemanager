@@ -67,10 +67,10 @@
          <bool>false</bool>
         </property>
         <property name="verticalScrollBarPolicy">
-         <enum>Qt::ScrollBarAlwaysOff</enum>
+         <enum>Qt::ScrollBarAlwaysOn</enum>
         </property>
         <property name="horizontalScrollBarPolicy">
-         <enum>Qt::ScrollBarAlwaysOff</enum>
+         <enum>Qt::ScrollBarAlwaysOn</enum>
         </property>
         <property name="dragDropMode">
          <enum>QAbstractItemView::DragDrop</enum>
@@ -80,6 +80,9 @@
         </property>
         <property name="resizeMode">
          <enum>QListView::Adjust</enum>
+        </property>
+        <property name="modelColumn">
+         <number>0</number>
         </property>
        </widget>
       </item>
@@ -93,7 +96,7 @@
      <x>0</x>
      <y>0</y>
      <width>870</width>
-     <height>23</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
